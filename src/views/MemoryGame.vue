@@ -1,17 +1,18 @@
 <template>
   <div class="memorygame">
-    <MemoryGame msg="Bienvenue sur le jeu de mémory"/>
+      <Header/>
   </div>
 </template>
 
+
 <script>
 // @ is an alias to /src
-import MemoryGame from '@/components/MemoryGame.vue'
+import Header from '@/components/Header.vue'
 
 export default {
   name: 'MemoryGame',
   components: {
-    MemoryGame
+    Header
   }
 }
 </script>
