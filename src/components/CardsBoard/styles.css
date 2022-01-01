@@ -1,0 +1,11 @@
+.cardsboard {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 700px;
+    margin: 2rem 3rem;
+    
+}
+
+.cardsboard>* {
+    flex: 1 1 150px;
+}

@@ -1,7 +1,6 @@
 <template>
   <div class="card">
     <img :src="carte.path" :alt="carte.name">
-
   </div>
  
   
