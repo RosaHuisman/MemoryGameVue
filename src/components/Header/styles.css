@@ -1,0 +1,16 @@
+.header {
+    background-color: #135c69;
+    padding: 2rem;
+    font-size: 1.1rem;
+}
+
+.header_title {
+    color: white
+}
+
+.header_scores {
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    padding: 0 3rem;
+}
