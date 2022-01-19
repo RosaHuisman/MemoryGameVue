@@ -1,14 +1,30 @@
 <template>
   <div class="newgame">
-      <button class="newgame_button">Nouvelle partie</button>
+      <button class="newgame_button" v-on:click="reset()" >Nouvelle partie</button>
   </div>
   
 </template>
 
 
 <script>
+import Vue from 'vue'
+import data from '/src/data.js'
+
+
 export default {
   name: 'NewGame',
+  data: data,
+
+  methods: {
+     reset() {
+       console.log("coucou")
+      this.cards.forEach((card) => {
+          Vue.set(card, 'isReturned',false);
+          Vue.set(card, 'isMatched',false);
+          console.log(card.isMatched)
+      });
+    },
+  }
 }
 </script>
 
