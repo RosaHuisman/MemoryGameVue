@@ -1,6 +1,6 @@
 <template>
   <div class="newgame">
-      <button class="newgame_button" v-on:click="reset()" >Nouvelle partie</button>
+      <button class="newgame_button" v-on:click="newGame()" >Nouvelle partie</button>
   </div>
   
 </template>
@@ -16,12 +16,11 @@ export default {
   data: data,
 
   methods: {
-     reset() {
-       console.log("coucou")
+     newGame() {
       this.cards.forEach((card) => {
-          Vue.set(card, 'isReturned',false);
+          Vue.set(card, 'returned',false);
           Vue.set(card, 'isMatched',false);
-          console.log(card.isMatched)
+          this.cards = this.cards.sort(() => 0.5 - Math.random());
       });
     },
   }

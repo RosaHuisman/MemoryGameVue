@@ -1,8 +1,11 @@
 <template>
   <div class="cardsboard">
-       <div v-for="card in cards" :key="card.id" v-on:click="returnCard(card)">
-         <!-- Passer les props à Card et faire l'affichage d'une card (enfin de toutes du coup)-->
-         <Card :card = 'card' />
+      <button class="newgame_button" v-on:click="newGame()"> Nouvelle partie </button>
+      
+       <div v-if="this.setNewGame"  class="cards">
+          <div v-for="card in cards" :key="card.id" v-on:click="returnCard(card)">
+            <Card :card = 'card' />
+          </div>
        </div>
   </div>
   
@@ -19,35 +22,24 @@ import Vue from 'vue'
 export default {
   name: 'CardsBoard',
   components: {
-    Card
+    Card,
   },
   data: data,
   methods: {
-    create(){
-        this.cards.forEach((card) => {
-            Vue.set(card,'isFlipped',false);
-        });
-
-        /* for(color of this.listColor) {
-            for(let value = 1; value < this.maxPair; value++) {
-                this.memoryCards.push(`${value}${color}`)
-            }
-        }; */
-
-       /*  this.memoryCards = this.memoryCards.sort(() => 0.5 - Math.random()); */
-
-
-        /* this.memoryCards = _.shuffle(this.memoryCards.concat(_.cloneDeep(this.cards), _.cloneDeep(this.cards))); */
-        this.reset();
+    newGame() {
+      this.setNewGame = true,
+      this.cards.forEach((card) => {
+          Vue.set(card, 'returned',false);
+          Vue.set(card, 'isMatched',false);
+          this.cards = this.cards.sort(() => 0.5 - Math.random());
+      });
     },
 
-    
     
     returnCard: function (card) {
       if(this.returnedCards.length < 2) {
         card.returned = !card.returned
         this.returnedCards.push(card);
-        console.log(this.returnedCards)
       }
       if(this.returnedCards.length === 2) {
         this._match(card);
