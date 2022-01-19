@@ -1,9 +1,9 @@
 export default function() {
     return {
-       cartes: [
-        {
-            id: 1,
-            name: 'As rouge',
+        cartes: [
+            {
+                id: 1,
+                name: 'As rouge',
             path: require('@/assets/1H.png')
         },
         {
