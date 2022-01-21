@@ -9,11 +9,7 @@
     </div>  
        <div v-if="this.setNewGame && !this.finish" class="cards">
             <div v-for="card in memoryCards" :key="card" v-on:click="returnCard(card)" >
-                <img 
-                  :src="(cards.find((searchedCard) => searchedCard.name === card)).returned? require('@/assets/'+card+'.png') : back" 
-                  :alt="card.name" 
-                  :class="(cards.find((searchedCard) => searchedCard.name === card)).isMatched? 'matched' : null "
-                  />
+                <Card :card = 'card' :cards = 'cards' />
             </div>
        </div>
      
@@ -24,7 +20,7 @@
 
 <script>
 import './styles.css';
-//import Card from '@/components/CardsBoard/Card/Card.vue';
+import Card from '@/components/CardsBoard/Card/Card.vue';
 import data from '/src/data.js'
 import Vue from 'vue'
 
@@ -32,6 +28,7 @@ import Vue from 'vue'
 export default {
   name: 'CardsBoard',
   components: {
+    Card
   },
   data: data,
   methods: {
@@ -92,17 +89,8 @@ export default {
 
           // All cards matched?
             if(this.cards.every(card => card.isMatched === true)){
-                this.allScores.push(this.count);
-
-                let score = this.$store.state.count;
-
-                console.log(score)
-               
-
+                let score = this.$store.state.count;               
                 this.$store.commit('pushScoreInAllScores', score)
-
-                 console.log(this.$store.state.allScores[0])
-
                 this.finish = true;
                 this.gameRunning = false;
                 
