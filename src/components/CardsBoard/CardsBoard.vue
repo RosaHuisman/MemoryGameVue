@@ -1,14 +1,14 @@
 <template>
   <div class="cardsboard">
-     <div v-if=" !this.gameRunning && this.finish ">
-      <p> Bravo, vous avez fini la partie avec {{this.count}} points </p>
-    </div>  
+    
+      <h3 v-if=" !this.gameRunning && this.finish && this.$store.state.count > 16"> Bravo, tu as fini la partie avec un score de : {{ $store.state.count }} points. Essaie d'améliorer ce score ! </h3>
+       <h3 v-if=" !this.gameRunning && this.finish && this.$store.state.count === 16 "> Bravo, tu es un chef, j'ai rien à dire.  </h3>
+
     <div v-if=" !this.gameRunning || this.finish ">
       <button class="newgame_button" v-on:click="newGame()"> Nouvelle partie </button>
     </div>  
        <div v-if="this.setNewGame && !this.finish" class="cards">
             <div v-for="card in memoryCards" :key="card" v-on:click="returnCard(card)" >
-              {{card}}
                 <img 
                   :src="(cards.find((searchedCard) => searchedCard.name === card)).returned? require('@/assets/'+card+'.png') : back" 
                   :alt="card.name" 
@@ -16,8 +16,7 @@
                   />
             </div>
        </div>
-       <span> High score : 25</span>
-      <span> Score : {{ count }} </span>
+     
   </div>
   
 </template>
@@ -41,7 +40,9 @@ export default {
       this.gameRunning = true;
       this.setNewGame = true;
       this.memoryCards = [];
-          
+      
+      this.$store.commit('returnToZero')
+        
       this.cards.forEach((card) => {
           Vue.set(card, 'returned',false);
           Vue.set(card, 'isMatched',false);
@@ -64,8 +65,7 @@ export default {
         }
       })
 
-      this.count++
-      this.$emit('update:score', this.count)
+      this.$store.commit('increment')
 
       if(this.returnedCards.length < 2 ) {
         card.returned = !card.returned
@@ -92,7 +92,20 @@ export default {
 
           // All cards matched?
             if(this.cards.every(card => card.isMatched === true)){
+                this.allScores.push(this.count);
+
+                let score = this.$store.state.count;
+
+                console.log(score)
+               
+
+                this.$store.commit('pushScoreInAllScores', score)
+
+                 console.log(this.$store.state.allScores[0])
+
                 this.finish = true;
+                this.gameRunning = false;
+                
             }
 
          }, 400);

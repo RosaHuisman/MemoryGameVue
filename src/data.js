@@ -8,7 +8,7 @@ export default function() {
         maxPair: 8,
         finish: false,
         gameRunning: false,
-        count: 0,
+        allScores: [],
         cards: [
             {
                 id: 1,
