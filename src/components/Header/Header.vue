@@ -3,7 +3,7 @@
     <h1 class="header_title"> Memory Game </h1>
     <div class="header_scores">
       <span> High score : 25</span>
-      <span> Score : 0 </span>
+      <span> Score : {{ count }} </span>
     </div>
   </div>
   
@@ -11,9 +11,13 @@
 
 <script>
 import './styles.css';
+import data from '/src/data.js'
+
 
 export default {
-  name: 'MemoryGame',
+  name: 'Header',
+  data: data,
+
 }
 </script>
 

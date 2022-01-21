@@ -7,6 +7,8 @@ export default function() {
         listColor: ['H', 'C'],
         maxPair: 8,
         finish: false,
+        gameRunning: false,
+        count: 0,
         cards: [
             {
                 id: 1,

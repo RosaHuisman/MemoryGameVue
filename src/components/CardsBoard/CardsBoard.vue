@@ -1,9 +1,14 @@
 <template>
   <div class="cardsboard">
+     <div v-if=" !this.gameRunning && this.finish ">
+      <p> Bravo, vous avez fini la partie avec {{this.count}} points </p>
+    </div>  
+    <div v-if=" !this.gameRunning || this.finish ">
       <button class="newgame_button" v-on:click="newGame()"> Nouvelle partie </button>
-      
-       <div v-if="this.setNewGame" class="cards">
+    </div>  
+       <div v-if="this.setNewGame && !this.finish" class="cards">
             <div v-for="card in memoryCards" :key="card" v-on:click="returnCard(card)" >
+              {{card}}
                 <img 
                   :src="(cards.find((searchedCard) => searchedCard.name === card)).returned? require('@/assets/'+card+'.png') : back" 
                   :alt="card.name" 
@@ -11,6 +16,8 @@
                   />
             </div>
        </div>
+       <span> High score : 25</span>
+      <span> Score : {{ count }} </span>
   </div>
   
 </template>
@@ -30,7 +37,8 @@ export default {
   data: data,
   methods: {
     newGame() {
-
+      this.finish = false;
+      this.gameRunning = true;
       this.setNewGame = true;
       this.memoryCards = [];
           
@@ -46,7 +54,6 @@ export default {
       });   
 
       this.memoryCards = this.memoryCards.sort(() => 0.5 - Math.random());
-     
     },
     
     returnCard: function (card) {
@@ -56,6 +63,9 @@ export default {
           return card = searchedCard;
         }
       })
+
+      this.count++
+      this.$emit('update:score', this.count)
 
       if(this.returnedCards.length < 2 ) {
         card.returned = !card.returned
@@ -80,12 +90,10 @@ export default {
           this.returnedCards.forEach(card => card.isMatched = true);
           this.returnedCards = []
 
-          //All cards matched ?
+          // All cards matched?
             if(this.cards.every(card => card.isMatched === true)){
-                //clearInterval(this.interval);
                 this.finish = true;
             }
-
 
          }, 400);
         }
