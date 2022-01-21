@@ -1,6 +1,6 @@
 export default function() {
     return {
-        back:  require('@/assets/back.png'),
+        back:  require('@/assets/back.jpg'),
         memoryCards: [],
         returnedCards : [],
         setNewGame: false,
