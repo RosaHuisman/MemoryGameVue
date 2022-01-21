@@ -1,6 +1,8 @@
+<!--   PLUS UTILISE (peut etre pour le moment peut etre pour toujours ....???? )
+
 <template>
   <div class="card">
-    <img :src="card.returned? card.path : back" :alt="card.name" >
+     <img :src="(cards.find((searchedCard) => searchedCard.name === card)).returned? require('@/assets/'+card+'.png') : back" :alt="card.name" >
   </div>
 </template>
 
@@ -17,4 +19,6 @@ export default {
     
   }
 }
-</script>
+</script> 
+
+-->

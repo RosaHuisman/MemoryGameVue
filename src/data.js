@@ -1,125 +1,138 @@
 export default function() {
     return {
         back:  require('@/assets/back.png'),
+        memoryCards: [],
         returnedCards : [],
         setNewGame: false,
-
+        listColor: ['H', 'C'],
+        maxPair: 8,
+        finish: false,
         cards: [
             {
                 id: 1,
-                name: 'As rouge',
+                name: '1C',
+                //img: '1C.png',
                 value: 1,
-                path: require('@/assets/1H.png'),
             },
             {
                 id: 2,
-                name: 'As noir',
+                name: '1H',
+                img: '1H.png',
                 value: 1,
-                path: require('@/assets/1C.png'),
 
 
             },
             {
                 id: 3,
-                name: 'Deux rouge',
+                name: '2C',
+                img: '2C.png',
                 value: 2,
-                path:  require('@/assets/2H.png'),
 
 
             },
             {
                 id: 4,
-                name: 'Deux noir',
+                name: '2H',
+                img: '2H.png',
                 value: 2,
-                path: require('@/assets/2C.png'),
 
 
             },
             {
                 id: 5,
-                name: 'Trois rouge',
+                name: '3C',
+                img: '3C.png',
                 value: 3,
-                path:  require('@/assets/3H.png'),
 
 
             },
             {
                 id: 6,
-                name: 'Trois noir',
+                name: '3H',
+                img: '3H.png',
                 value: 3,
-                path:  require('@/assets/3C.png'),
 
 
             },
             {
                 id: 7,
-                name: 'Quatre rouge',
+                name: '4C',
+                img: '3C.png',
+
                 value: 4,
-                path:  require('@/assets/4H.png'),
 
 
             },
             {
                 id: 8,
-                name: 'Quatre noir',
+                name: '4H',
+                img: '3H.png',
+
                 value: 4,
-                path:  require('@/assets/4C.png'),
 
             },
             {
                 id: 9,
-                name: 'Cinq rouge',
+                name: '5C',
+                img: '3C.png',
+
                 value: 5,
-                path:  require('@/assets/5H.png'),
 
             },
             {
                 id: 10,
-                name: 'Cinq noir',
+                name: '5H',
+                img: '3H.png',
+
                 value: 5,
-                path:  require('@/assets/5C.png'),
 
             },
             {
                 id: 11,
-                name: 'Six rouge',
+                name: '6C',
+                img: '3C.png',
+
                 value: 6,
-                path:  require('@/assets/6H.png'),
 
             },
             {
                 id: 12,
-                name: 'Six noir',
+                name: '6H',
+                img: '3H.png',
+
                 value: 6,
-                path:  require('@/assets/6C.png'),
 
             },
             {
                 id: 13,
-                name: 'Sept rouge',
+                name: '7C',
+                img: '3C.png',
+
                 value: 7,
-                path:  require('@/assets/7H.png'),
 
             },
             {
                 id: 14,
-                name: 'Sept noir',
+                name: '7H',
+                img: '3H.png',
+
                 value: 7,
-                path:  require('@/assets/7C.png'),
 
             },
             {
                 id: 15,
-                name: 'Huit rouge',
+                name: '8C',
+                img: '3C.png',
+
                 value: 8,
-                path:  require('@/assets/8H.png'),
 
             },
             {
                 id: 16,
-                name: 'Huit noir',
+                name: '8H',
+                img: '3H.png',
+
                 value: 8,
-                path:  require('@/assets/8C.png'),
 
             },
             

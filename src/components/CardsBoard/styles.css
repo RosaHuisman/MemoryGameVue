@@ -18,3 +18,7 @@
     font-size: 1.2rem;
     border-radius: 5px;
 }
+
+.matched {
+    opacity: 0.3;
+}
