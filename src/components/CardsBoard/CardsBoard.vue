@@ -96,13 +96,13 @@ export default {
                 
             }
 
-         }, 400);
+         }, 600);
         }
       else{
          setTimeout(() => {
           this.returnedCards.forEach((card) => {card.returned = false});
           this.returnedCards = [];
-         }, 700);
+         }, 1000);
       }
     },
 

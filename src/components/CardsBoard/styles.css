@@ -19,3 +19,12 @@
     border-radius: 5px;
 }
 
+@media only screen and (max-width: 600px) {
+    .cards {
+        margin: 0rem;
+    }
+    .cards>* {
+        flex: 0px;
+    }
+}
+
