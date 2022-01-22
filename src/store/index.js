@@ -9,6 +9,7 @@ export default new Vuex.Store({
     state: {
         count: 0,
         allScores: [],
+        name: '',
         
     },
     mutations: {
@@ -20,7 +21,11 @@ export default new Vuex.Store({
         },
         pushScoreInAllScores (state, score) {
             state.allScores.push(score)
-        }
+        },
+        updateName(state, newName) {
+            state.name = newName;
+            console.log(newName);
+          }
 
     },
     actions: {
