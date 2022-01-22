@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import MemoryGame from '../views/MemoryGame.vue'
+import AllScores from '../views/AllScores.vue'
 
 
 Vue.use(VueRouter)
@@ -11,6 +12,13 @@ const routes = [
     name: 'MemoryGame',
     component: MemoryGame
   },
+  {
+    path: '/allscores',
+    name: 'AllScores',
+    component: AllScores
+  },
+
+  
 ]
 
 const router = new VueRouter({

@@ -30,10 +30,16 @@ export default new Vuex.Store({
             state.gameRunning = true;
             state.setNewGame = true; 
         },
-        finish(state, score) {
+        finish(state, group) {
             state.finish = true;
-            state.allScores.push(score);
+            console.log(group);
+            state.allScores.push(group);
             state.gameRunning = false;
+        },
+        reinitializeGame(state) {
+            state.finish = true;
+            state.gameRunning = false;
+
         },
 
     },
@@ -41,5 +47,5 @@ export default new Vuex.Store({
         
 
     },
-    plugins: [createPersistedState()],
+    plugins: [createPersistedState()], 
 })

@@ -5,6 +5,7 @@
         :alt="card.name" 
         :class="(cards.find((searchedCard) => searchedCard.name === card)).isMatched? 'card matched' : 'card' "
       />
+      {{card}}
   </div>
 </template>
 

@@ -12,11 +12,9 @@
                 <Card :card = 'card' :cards = 'cards' />
             </div>
        </div>
-     
+      <button class="newgame_button" v-on:click="_getNow()"> test getdate </button>
   </div>
-  
 </template>
-
 
 <script>
 import './styles.css';
@@ -85,11 +83,10 @@ export default {
 
           // All cards matched?
             if(this.cards.every(card => card.isMatched === true)){
-                let score = this.$store.state.count;               
-                //this.$store.commit('pushScoreInAllScores', score)
-                this.$store.commit('finish', score)
-                //this.gameRunning = false;
-                
+                let score = this.$store.state.count;
+                let dateTime = this._getNow();
+                let group = {score, dateTime}               
+                this.$store.commit('finish', group)      
             }
 
          }, 600);
@@ -101,6 +98,14 @@ export default {
          }, 1000);
       }
     },
+    _getNow: function() {
+        const today = new Date();
+        const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+        const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        const dateTime = date +' '+ time;
+        this.timestamp = dateTime;
+        return dateTime;
+        }
 
   } 
 }

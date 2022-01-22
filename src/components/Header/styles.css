@@ -7,10 +7,14 @@
 .header_title {
     color: white
 }
-
-.header_scores {
+.header_section {
     display: flex;
     justify-content: space-between;
+}
+
+.header_scores {
+    /* display: flex;
+    justify-content: space-between; */
     color: white;
     padding: 0 3rem;
     margin-bottom: 1em;
@@ -19,6 +23,12 @@
 .name {
     color: white;
     margin-right: 0.4rem;
+}
+
+.button_see_all_scores {
+    padding: 1rem;
+    border: none;
+    border-radius: 5px;
 }
 
 @media only screen and (max-width: 600px) {
