@@ -3,11 +3,7 @@ export default function() {
         back:  require('@/assets/back.jpg'),
         memoryCards: [],
         returnedCards : [],
-        setNewGame: false,
         listColor: ['H', 'C'],
-        maxPair: 8,
-        finish: false,
-        gameRunning: false,
         cards: [
             {
                 id: 1,

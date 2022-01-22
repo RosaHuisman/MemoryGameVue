@@ -10,22 +10,31 @@ export default new Vuex.Store({
         count: 0,
         allScores: [],
         name: '',
+        finish: false,
+        gameRunning: false,
+        setNewGame: false,
+        maxPair: 8,
+
         
     },
     mutations: {
         increment (state) {
             state.count++
           },
-        returnToZero (state) {
-            state.count = 0
-        },
-        pushScoreInAllScores (state, score) {
-            state.allScores.push(score)
-        },
         updateName(state, newName) {
             state.name = newName;
-            console.log(newName);
-          }
+        },
+        newGame(state) {
+            state.finish = false;
+            state.count = 0;
+            state.gameRunning = true;
+            state.setNewGame = true; 
+        },
+        finish(state, score) {
+            state.finish = true;
+            state.allScores.push(score);
+            state.gameRunning = false;
+        },
 
     },
     actions: {

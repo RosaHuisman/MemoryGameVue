@@ -1,13 +1,13 @@
 <template>
   <div class="cardsboard">
     
-      <h3 v-if=" !this.gameRunning && this.finish && this.$store.state.count > 16"> Bravo, tu as fini la partie avec un score de : {{ $store.state.count }} points. Essaie d'améliorer ce score ! </h3>
-       <h3 v-if=" !this.gameRunning && this.finish && this.$store.state.count === 16 "> Bravo, tu es un chef, j'ai rien à dire.  </h3>
+      <h3 v-if=" !this.$store.state.gameRunning && this.$store.state.finish && this.$store.state.count > 16"> Bravo, tu as fini la partie avec un score de : {{ $store.state.count }} points. Essaie d'améliorer ce score ! </h3>
+       <h3 v-if=" !this.$store.state.gameRunning && this.$store.state.finish && this.$store.state.count === 16 "> Bravo, tu es un chef, j'ai rien à dire.  </h3>
 
-    <div v-if=" !this.gameRunning || this.finish ">
+    <div v-if=" !this.$store.state.gameRunning || this.$store.state.finish ">
       <button class="newgame_button" v-on:click="newGame()"> Nouvelle partie </button>
     </div>  
-       <div v-if="this.setNewGame && !this.finish" class="cards">
+       <div v-if="this.$store.state.setNewGame && !this.$store.state.finish" class="cards">
             <div v-for="card in memoryCards" :key="card" v-on:click="returnCard(card)" >
                 <Card :card = 'card' :cards = 'cards' />
             </div>
@@ -33,20 +33,16 @@ export default {
   data: data,
   methods: {
     newGame() {
-      this.finish = false;
-      this.gameRunning = true;
-      this.setNewGame = true;
+      this.$store.commit('newGame')
       this.memoryCards = [];
-      
-      this.$store.commit('returnToZero')
-        
+
       this.cards.forEach((card) => {
           Vue.set(card, 'returned',false);
           Vue.set(card, 'isMatched',false);
       });
 
       this.listColor.forEach((color) => {
-          for(let value = 1; value <= this.maxPair; value++) {
+          for(let value = 1; value <= this.$store.state.maxPair; value++) {
             this.memoryCards.push(`${value}${color}`)
           }
       });   
@@ -90,9 +86,9 @@ export default {
           // All cards matched?
             if(this.cards.every(card => card.isMatched === true)){
                 let score = this.$store.state.count;               
-                this.$store.commit('pushScoreInAllScores', score)
-                this.finish = true;
-                this.gameRunning = false;
+                //this.$store.commit('pushScoreInAllScores', score)
+                this.$store.commit('finish', score)
+                //this.gameRunning = false;
                 
             }
 
