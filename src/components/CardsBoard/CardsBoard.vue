@@ -72,8 +72,6 @@ export default {
     },
 
     _match(){
-
-
       let wordTest1 = this.returnedCards[0].fruit.split('');
       let wordTest2 = this.returnedCards[1].fruit.split('');
      
@@ -83,7 +81,6 @@ export default {
         }
       })
       let word1 = wordTest1.join('');
-      console.log(word1)
 
       wordTest2.find((letter) => {
         if(letter === '2'){
@@ -91,7 +88,6 @@ export default {
         }
       }) 
       let word2 = wordTest2.join('');
-      console.log(word2)
 
 
       if(word1 === word2){
