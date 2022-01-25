@@ -14,8 +14,10 @@ export default new Vuex.Store({
         gameRunning: false,
         setNewGame: false,
         maxPair: 8,
-
-        
+        memoryCards: [],
+        returnedCards: [],
+        fruits: [ 'fraise', 'orange', 'kiwi', 'poire', 'cerise', 'ananas', 'citron', 'banane' ],
+        fruits2: [ 'fraise2', 'orange2', 'kiwi2', 'poire2', 'cerise2', 'ananas2', 'citron2', 'banane2' ],        
     },
     mutations: {
         increment (state) {
